@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Error404Page } from './pages/error404-page/error404-page';
+import { Error404PageComponent } from './pages/error404-page/error404-page';
 
 
 
 @NgModule({
   declarations: [
-    Error404Page
+    Error404PageComponent
   ],
   exports: [
-    Error404Page
+    Error404PageComponent
   ]
 })
 export class SharedModule { }

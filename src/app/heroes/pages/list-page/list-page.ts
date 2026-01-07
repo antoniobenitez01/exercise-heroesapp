@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styles: ``,
   standalone : false
 })
-export class ListPage {
+export class ListPageComponent {
 
 }
