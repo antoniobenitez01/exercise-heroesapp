@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'app-search-page',
   standalone : false,
-  templateUrl: './login-page.html',
+  templateUrl: './search-page.html',
   styles: ``,
 })
-export class LoginPage {
+export class SearchPage {
 
 }
