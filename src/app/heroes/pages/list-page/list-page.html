@@ -1,1 +1,5 @@
-<p>list-page works!</p>
+<ul>
+  @for (hero of listadoHeroes; track $index) {
+    <li><b>{{ hero.publisher }}</b> - {{hero.superhero}} / <span style="color:grey">{{hero.alter_ego}}</span></li>
+  }
+</ul>

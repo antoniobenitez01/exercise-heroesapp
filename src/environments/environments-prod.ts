@@ -1,3 +1,3 @@
 export const environments = {
-  baseUrl : 'http://atleti.alumnoweb.es/api'
+  baseUrl : 'http://heroesapp.es/api'
 }
