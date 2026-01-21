@@ -2,7 +2,7 @@
 
   <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
 
-    <mat-toolbar color="warn">
+    <mat-toolbar class="toolbar-warn">
       <span>Menú</span>
       <span class="spacer"></span>
       <button mat-icon-button (click)="sidenav.toggle()">
@@ -21,7 +21,7 @@
 
   </mat-sidenav>
 
-  <mat-toolbar color="primary">
+  <mat-toolbar class="toolbar-primary">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -31,7 +31,7 @@
     </button>
   </mat-toolbar>
 
-  <div class="container">
+  <div class="container p-2">
     <router-outlet></router-outlet>
   </div>
 
