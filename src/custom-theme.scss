@@ -47,3 +47,12 @@ body {
   // Reset the user agent margin.
   margin: 0;
 }
+
+mat-sidenav-container,
+.mat-drawer-container,
+.mat-drawer,
+.mat-drawer-inner-container,
+.mat-drawer-content,
+mat-sidenav {
+  border-radius : 0 !important;  
+}
