@@ -9,7 +9,7 @@
     <div class="col-12 sm:col-6">
         <mat-card>
             <mat-card-content>
-                <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+                <form class="grid" [formGroup]="heroForm">
 
                     <mat-form-field class="col-12 sm:col-6">
                         <mat-label>Super héroe</mat-label>
@@ -51,7 +51,7 @@
 
                 <div class="flex justify-content-between">
                     <button matButton="elevated" color="warn">Borrar</button>
-                    <button matButton="filled" color="primary">Guardar</button>
+                    <button matButton="filled" color="primary" [disabled]="!heroForm.valid" (click)="onSubmit()">Guardar</button>
                 </div>
 
             </mat-card-content>
