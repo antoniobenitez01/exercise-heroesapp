@@ -16,7 +16,7 @@ export class SearchPageComponent {
   public selectedHero? : Hero;
 
   constructor(private heroesService : HeroesService) {}
-  
+
   public searchHero(){
     const value: string = this.searchInput.value || '';
     this.heroesService.getSuggestions(value).subscribe(
