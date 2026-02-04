@@ -13,7 +13,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
       "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne"
+      "characters": "Bruce Wayne",
+      "alt_img": null
     },
     {
       "id": "dc-superman",
@@ -21,7 +22,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": null
     },
     {
       "id": "dc-flash",
@@ -174,6 +176,15 @@
       "alter_ego": "Natasha Romanov",
       "first_appearance": "Whhhat Comics #69",
       "characters": "Natasha Romanov"
+    },
+    {
+      "id": "6A6dHYi",
+      "superhero": "Vegeta",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Vegeta",
+      "first_appearance": "Dragon Ball Z",
+      "characters": "Vegeta, Bulma, Trunks",
+      "alt_img": "https://preview.redd.it/why-do-you-think-vegetas-and-trunkss-super-saiyan-2-are-v0-nyq0xt9gjqbd1.jpg?width=640&crop=smart&auto=webp&s=5e5a039b4f228353d57911600464e1ab2383f135"
     }
   ]
 }

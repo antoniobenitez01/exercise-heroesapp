@@ -1,6 +1,9 @@
 <h1>
-    Editar / Añadir Héroe
-    <small>Superman</small>
+    {{ currentHero.id ? 'Editar' : 'Añadir'}}
+    héroe
+    @if( currentHero.id ){
+      <small>{{ currentHero.superhero }}</small>
+    }
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
@@ -50,8 +53,10 @@
                 </form>
 
                 <div class="flex justify-content-between">
+                  @if(currentHero.id){
                     <button matButton="elevated" color="warn">Borrar</button>
-                    <button matButton="filled" color="primary" [disabled]="!heroForm.valid" (click)="onSubmit()">Guardar</button>
+                  }
+                  <button matButton="filled" color="primary" [disabled]="!heroForm.valid" (click)="onSubmit()">Guardar</button>
                 </div>
 
             </mat-card-content>
@@ -60,8 +65,12 @@
 
     <div class="col-12 sm:col-6">
         <mat-card>
-            <img src="" alt="Imágen del Héroe" mat-card-image>
+            <img [src]="currentHero | heroImage" alt="Imágen del Héroe" mat-card-image>
         </mat-card>
     </div>
+
+    <pre>
+      {{ currentHero | json }}
+    </pre>
 
 </div>

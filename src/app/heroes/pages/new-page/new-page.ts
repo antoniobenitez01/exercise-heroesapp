@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Publisher } from '../../interfaces/hero-interface';
+import { Publisher, Hero } from '../../interfaces/hero-interface';
+import { HeroesService } from '../../services/heroes';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-new-page',
@@ -8,7 +11,13 @@ import { Publisher } from '../../interfaces/hero-interface';
   templateUrl: './new-page.html',
   styles: ``
 })
-export class NewPageComponent {
+export class NewPageComponent implements OnInit {
+
+  constructor(
+    private heroesService : HeroesService,
+    private router : Router,
+    private snackbar : MatSnackBar
+  ){}
 
   public heroForm = new FormGroup({
     id : new FormControl(''),
@@ -20,15 +29,59 @@ export class NewPageComponent {
     alt_img : new FormControl('')
   });
 
+  ngOnInit(): void {
+
+    if (this.router.url.includes('edit')) {
+      const id = this.router.url.split('/').pop();
+      if( !id ) return;
+
+      this.heroesService.getHeroById( id )
+        .subscribe( hero => {
+          if(!hero){
+            console.log(`Héroe con ID [${id}] no encontrado.`);
+            this.router.navigate(['/heroes']);
+            return;
+          }
+          this.heroForm.reset( hero );
+        });
+    };
+
+  }
+
   public publishers = [
     { id: 'DC Comics', desc: 'DC - Cómics'},
     { id: 'Marvel Comics', desc: 'Marvel - Cómics'}
   ];
 
+  get currentHero() : Hero {
+    const hero = this.heroForm.value as Hero;
+    return hero;
+  }
+
   onSubmit() : void {
-    console.log({
-      formValid : this.heroForm.valid,
-      value : this.heroForm.value
-    });
+
+    if (this.heroForm.invalid) return;
+
+    if ( this.currentHero.id ) {
+      this.heroesService.updateHero(this.currentHero)
+        .subscribe( hero => {
+          this.showSnackBar(`${ hero.superhero } updated!`)
+          this.router.navigate(['/heroes']);
+        });
+      return;
+    }
+
+    this.heroesService.addHero( this.currentHero )
+      .subscribe( hero => {
+        this.showSnackBar(`${ hero.superhero } created!`)
+        this.router.navigate(['/heroes']);
+      });
+
+  }
+
+  private showSnackBar( message : string) : void {
+    this.snackbar.open( message, 'OK', {
+      duration : 1500
+    })
   }
 }
