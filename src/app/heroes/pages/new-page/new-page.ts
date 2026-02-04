@@ -4,6 +4,8 @@ import { Publisher, Hero } from '../../interfaces/hero-interface';
 import { HeroesService } from '../../services/heroes';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatDialog } from '@angular/material/dialog'
+import { ConfirmDialog } from '../../components/confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-new-page',
@@ -16,7 +18,8 @@ export class NewPageComponent implements OnInit {
   constructor(
     private heroesService : HeroesService,
     private router : Router,
-    private snackbar : MatSnackBar
+    private snackbar : MatSnackBar,
+    private dialog : MatDialog
   ){}
 
   public heroForm = new FormGroup({
@@ -83,5 +86,12 @@ export class NewPageComponent implements OnInit {
     this.snackbar.open( message, 'OK', {
       duration : 1500
     })
+  }
+
+  public onDeleteHero(){
+    if (!this.currentHero.id) throw Error("Hero ID is required");
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      data: this.heroForm.value
+    });
   }
 }
