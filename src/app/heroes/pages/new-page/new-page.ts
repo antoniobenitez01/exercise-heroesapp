@@ -5,7 +5,7 @@ import { HeroesService } from '../../services/heroes';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog } from '@angular/material/dialog'
-import { ConfirmDialog } from '../../components/confirm-dialog/confirm-dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-new-page',
@@ -90,8 +90,13 @@ export class NewPageComponent implements OnInit {
 
   public onDeleteHero(){
     if (!this.currentHero.id) throw Error("Hero ID is required");
-    const dialogRef = this.dialog.open(ConfirmDialog, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: this.heroForm.value
+    });
+    dialogRef.afterClosed().subscribe( result => {
+      if ( !result ) return;
+      console.log(`${this.currentHero.superhero} has been deleted.`);
+      this.router.navigate(['/heroes']);
     });
   }
 }
