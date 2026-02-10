@@ -3,7 +3,7 @@
   <p>Este proceso no es reversible. Si continúa eliminará a {{ data.superhero }}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button matButton="elevated" color="warn" (click)="onNoClick()">No Thanks</button>
   <span class="spacer"></span>
-  <button mat-button (click)="onConfirm()">OK</button>
+  <button matButton="filled" color="primary" (click)="onConfirm()">OK</button>
 </div>

@@ -25,12 +25,14 @@ export class ConfirmDialogComponent {
 
   onConfirm(): void {
     this.heroesService.deleteHeroById(this.data.id)
-      .subscribe({
-        next : () => this.dialogRef.close(true),
-        error: err => {
-          this.showSnackBar(`Error deleting ${this.data.superhero}`)
+      .subscribe( wasDeleted => {
+        if(wasDeleted){
+          this.showSnackBar(`${this.data.superhero} has been deleted.`);
+          this.dialogRef.close(true);
+        }else{
+          this.showSnackBar(`Error deleting ${this.data.superhero}`);
         }
-      })
+      });
   }
 
   private showSnackBar( message : string) : void {
